@@ -52,7 +52,7 @@ def DECART(dataset, metrics, month):
 
     result_list_mre = []
     result_list_sa = []
-    print("DECART", "predict", test_predict, "actual", test_actual)
+    # print("DECART", "predict", test_predict, "actual", test_actual)
     result_list_mre.append(mre_calc(test_predict, test_actual))
     result_list_sa.append(sa_calc(test_predict, test_actual, train_output))
 
