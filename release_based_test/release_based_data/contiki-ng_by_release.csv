@@ -1,0 +1,7 @@
+release,tag_name,commit_id,date,days_since_last_release,number_of_contributors,number_of_commits,number_of_new_contributors,number_of_contributor-domains,number_of_new_contributor-domains,number_of_open_PRs,number_of_closed_PRs,number_of_merged_PRs,number_of_open_issues,number_of_closed_issues,number_of_issue_comments,number_of_stargazers,number_of_forks
+8398144,release/v4.0,8602fb51f520c07a3de1344b0896785bfc836daf,2017-11-06 17:39:08,0,260,12892,260,137,137,92,6,86,158,126,718,10,9
+10928570,release/v4.1,7da2787933670aba5d42a079f655ea4346c141c9,2018-05-11 18:59:14,186,36,1077,19,22,7,2,1,0,350,297,2090,102,57
+13956422,release/v4.2,7b076e4af14b2259596f6d3765105d0593ae5257,2018-11-12 21:31:48,185,35,728,18,20,8,2,1,1,251,234,1394,57,57
+17390669,release/v4.3,a51f3d8cf73c51379367c0743cf48c3d765b16cb,2019-05-17 00:49:47,185,24,281,7,16,5,2,1,2,206,164,861,64,40
+20739736,release/v4.4,20c6bb8f8f21124b3ba9ba079b2625acf5868ebd,2019-10-31 14:14:05,167,20,303,7,14,3,2,1,0,146,148,747,115,61
+25762494,release/v4.5,31753fed81d980ef1b0de477921ab977f4c1a552,2020-05-14 15:45:25,196,22,183,11,15,6,1,0,1,151,125,742,138,97

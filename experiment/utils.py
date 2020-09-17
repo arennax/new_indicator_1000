@@ -11,31 +11,6 @@ def df_split(df, month):
     yield trainData, testData
 
 
-def df_split_sd(df):
-
-    last_col_original = df.iloc[:, -1]
-    df_new = df.copy()
-    for i in range(len(df)):
-        temp = last_col_original.iloc[:i+1]
-        df_new.iloc[i, -1] = np.std(temp)
-    sd_column = df_new.iloc[:,-1]
-    sd_gain_column = sd_column.copy()
-    for i in range(len(sd_column)-1):
-        if sd_column[i] == 0:
-            sd_gain_column[i+1] = 0
-        else:
-            sd_gain_column[i + 1] = (sd_column[i+1] - sd_column[i]) / sd_column[i]
-    month = abs(sd_gain_column[12:]).idxmax()
-    # with open("./spike_6month.csv", "a+") as output:
-    #     output.write(str(month+1) + ",")
-    trainData = df_new.iloc[:month-6]
-    testData = df_new.iloc[month:month+1]
-    # pd.set_option("max_columns", 3)
-    # print("trainData: ", trainData)
-    # print("testData: ", testData)
-    yield trainData, testData
-
-
 def normalize(df):
     min_max_scaler = preprocessing.MinMaxScaler()
     np_scaled = min_max_scaler.fit_transform(df)
@@ -78,6 +53,23 @@ def sa_calc(Y_predict, Y_actual, X_actual):
     return sa_error
 
 
+def confusion_matrix_calc(TN, FP, FN, TP):
+    Accuracy = (TP + TN) / (TP + FP + FN + TN)
+    if TP + FP == 0:
+        Precision = 0
+    else:
+        Precision = TP / (TP + FP)
+    if TP + FN == 0:
+        Recall = 0
+    else:
+        Recall = TP / (TP + FN)
+    if Recall + Precision == 0:
+        F1 = 0
+    else:
+        F1 = 2 * (Recall * Precision) / (Recall + Precision)
+    return [Accuracy, Precision, Recall, F1]
+
+
 def data_goal_arrange(repo_name, directory, goal):
     df_raw = pd.read_csv(directory + repo_name, sep=',')
     df_raw = df_raw.drop(columns=['dates'])
@@ -108,6 +100,63 @@ def data_goal_arrange(repo_name, directory, goal):
     df_adjust = df_raw[cols+[last_col]]
 
     return df_adjust
+
+
+def df_anomaly_label(df):
+
+    last_col_original = df.iloc[:, -1]
+    # print(last_col_original)
+    df_new = df.copy()
+    for i in range(len(df)):
+        temp = last_col_original.iloc[:i+1]
+        df_new.iloc[i, -1] = np.std(temp)
+    sd_column = df_new.iloc[:,-1]
+    for i in range(len(sd_column)):
+        if i < 12:
+            sd_column[i] = 0
+    # print(sd_column)
+    sd_gain_column = sd_column.copy()
+    for i in range(len(sd_gain_column) - 1):
+        if sd_column[i] == 0:
+            sd_gain_column[i + 1] = 0
+        else:
+            sd_gain_column[i + 1] = (sd_column[i+1] - sd_column[i]) / sd_column[i]
+    # print(sd_gain_column)
+    sd_label = sd_gain_column.copy()
+    for i in range(len(sd_label)):
+        if i < 12:
+            sd_label[i] = 0
+        elif sd_label[i] < -0.01 or sd_label[i] > 0.1:
+            sd_label[i] = 1
+        else:
+            sd_label[i] = 0
+    # pd.set_option("max_rows", None)
+    # print(sd_label)
+    df_new.iloc[:, -1] = sd_label
+    train_part = int(len(sd_label) * 2 / 3)
+    first_anomaly = sd_label.idxmax()
+    month = train_part if train_part > first_anomaly else first_anomaly
+    # print(train_part, first_anomaly, month)
+    trainData = df_new.iloc[:month]
+    testData = df_new.iloc[month:]
+    # pd.set_option("max_columns", 4)
+    # print("trainData: ", trainData)
+    # print("testData: ", testData)
+    yield trainData, testData
+
+
+def my_confusion_matrix(list_actual, list_predict):
+    tn, fp, fn, tp = 0, 0, 0, 0
+    for i in range(len(list_actual)):
+        if list_actual[i] == list_predict[i] == 0:
+            tn += 1
+        if list_actual[i] == list_predict[i] == 1:
+            tp += 1
+        if list_actual[i] == 0 and list_predict[i] == 1:
+            fp += 1
+        if list_actual[i] == 1 and list_predict[i] == 0:
+            fn += 1
+    return tn, fp, fn, tp
 
 
 if __name__ == '__main__':

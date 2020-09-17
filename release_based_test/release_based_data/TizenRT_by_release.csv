@@ -1,0 +1,5 @@
+release,tag_name,commit_id,date,days_since_last_release,number_of_contributors,number_of_commits,number_of_new_contributors,number_of_contributor-domains,number_of_new_contributor-domains,number_of_open_PRs,number_of_closed_PRs,number_of_merged_PRs,number_of_open_issues,number_of_closed_issues,number_of_issue_comments,number_of_stargazers,number_of_forks
+8448771,1.0_Public_M1,4fc385da0f48ac9bb776ec5638506e8ad54609d2,2016-12-23 15:13:53,0,6,16,6,2,2,0,0,0,0,0,0,0,0
+8448629,1.1_Public_Release,3a42b210e281b256d103d23d13c1618bc7bd02ff,2017-10-20 04:31:07,300,78,2636,75,10,9,823,125,668,867,824,1680,72,84
+15131521,2.0_Public_M2,695e332317e1fe60ccc242d068db9e4a4b2953a8,2018-09-21 15:16:18,336,112,2826,65,18,9,1375,237,1135,1410,1405,16262,104,129
+22133096,3.0_GBM,faa2b5b577f2cf9d11e792916fed104cf5b4d0d6,2019-10-14 12:25:59,387,79,2694,37,10,3,1137,201,919,1671,1651,19280,105,172

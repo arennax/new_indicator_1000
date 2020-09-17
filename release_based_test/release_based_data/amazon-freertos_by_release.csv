@@ -1,0 +1,5 @@
+release,tag_name,commit_id,date,days_since_last_release,number_of_contributors,number_of_commits,number_of_new_contributors,number_of_contributor-domains,number_of_new_contributor-domains,number_of_open_PRs,number_of_closed_PRs,number_of_merged_PRs,number_of_open_issues,number_of_closed_issues,number_of_issue_comments,number_of_stargazers,number_of_forks
+23495670,201910.00,b223a00091a0e6ef724b55cddbe3ca493e86202a,2019-10-30 02:32:09,0,97,2686,97,23,23,580,160,401,1470,1418,4388,1607,556
+23495785,201912.00,8add5b911e34461ea99346f8b598a09827216bb9,2019-12-18 03:45:03,49,37,240,11,11,1,95,18,82,168,188,689,98,55
+23787452,202002.00,987d9697ad4dc924bd71333c57b2f68bbe81b172,2020-02-19 05:13:00,63,25,78,9,7,2,55,12,45,128,139,636,99,52
+28694797,202007.00,4e8219e0923d459900924ff760ac492224b131fb,2020-07-18 01:13:23,149,58,587,25,12,4,331,61,264,523,498,1955,225,112

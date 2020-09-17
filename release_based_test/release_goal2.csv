@@ -1,0 +1,10 @@
+AliOS-Things_by_release.csv, 3.6,5.361,2.0,947.864,3.0,0.5
+LiteOS_by_release.csv, 0.6,2.026,0.0,6.271,0.0,0.0
+NuttX_by_release.csv, 3.714,3.714,3.714,3.714,3.714,3.714
+RIOT_by_release.csv, 0.048,0.593,0.365,0.11,0.143,0.024
+TizenRT_by_release.csv, 0.0,0.018,0.267,0.824,0.0,0.0
+amazon-freertos_by_release.csv, 0.139,0.061,0.25,0.13,0.083,0.083
+contiki-ng_by_release.csv, 1.787,0.318,0.156,0.47,0.467,0.0
+mbed-os_by_release.csv, 0.0,1.069,0.524,0.185,0.714,0.017
+rt-thread_by_release.csv, 0.276,0.511,0.238,0.024,0.143,0.048
+zephyr_by_release.csv, 0.3,0.051,0.357,0.308,0.429,0.144
