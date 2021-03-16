@@ -14,7 +14,10 @@ def de(fun_opt, metrics, bounds, mut=0.5, crossp=0.5, popsize=20, itrs=10):
     # pop_denorm = min_b + pop * diff
     pop_denorm = np.rint(min_b + pop * diff).astype(np.int)
     fitness = np.asarray([fun_opt(*ind) for ind in pop_denorm])
-    best_idx = np.argmin(fitness)
+    if metrics == 0:
+        best_idx = np.argmin(fitness)
+    if metrics == 1:
+        best_idx = np.argmax(fitness)
     best = pop_denorm[best_idx]
     for i in range(itrs):
         for j in range(popsize):
